@@ -25,31 +25,16 @@
   <!-- nuget -->
   <PropertyGroup>
     <Authors>
-      Naamloos, afroraydude, DrCreo, Death, TiaqoY0, Axiom, Emzi0767, IDoEverything, Velvet, OoLunar, akiraveliara, DSharpPlus contributors
+      akiraveliara, ETFKit Contributors
     </Authors>
-    <Description>A C# API for Discord based off DiscordSharp.</Description>
-    <Company>DSharpPlus Contributors</Company>
-    <PackageProjectUrl>https://github.com/DSharpPlus/DSharpPlus</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/DSharpPlus/DSharpPlus</RepositoryUrl>
+    <Description>A fast and low-allocation ETF de/serializer</Description>
+    <Company>ETFKit Contributors</Company>
+    <PackageProjectUrl>https://github.com/expletive/ETFKit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/expletive/ETFKit</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
-    <PackageLicenseExpression>MPL</PackageLicenseExpression>
-    <PackageIcon>dsharpplus.png</PackageIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/logo/dsharpplus.png</PackageIconUrl>
-  </PropertyGroup>
-
-  <!-- version numbers to ensure we always reference the correct version -->
-  <PropertyGroup>
-    <!-- this is inserted as the version prefix for all libraries declaring themselves as public-facing -->
-    <_DSharpPlusReleaseVersion>6.0.0</_DSharpPlusReleaseVersion>
-
-    <!-- DSharpPlus.Core.Abstractions.Models -->
-    <_DSharpPlusCoreAbstractionsModelsVersion>0.1.0</_DSharpPlusCoreAbstractionsModelsVersion>
-    
-    <!-- DSharpPlus.Core.Models-->
-    <_DSharpPlusCoreModelsVersion>0.1.0</_DSharpPlusCoreModelsVersion>
-    
-    <!-- DSharpPlus.Etf-->
-    <_DSharpPlusEtfVersion>0.1.0</_DSharpPlusEtfVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>etfkit.png</PackageIcon>
+    <PackageIconUrl>expletive</PackageIconUrl>
   </PropertyGroup>
 
 </Project>
