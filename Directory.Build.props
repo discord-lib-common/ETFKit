@@ -1,0 +1,55 @@
+<Project>
+
+  <!-- build -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <LangVersion>preview</LangVersion>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <AnalysisMode>All</AnalysisMode>
+    <NoWarn>$(NoWarn);CS1591;CA1028;CA1062;CA1711;CA1716;CA1720;CA2007</NoWarn>
+
+    <!-- build and versioning setup -->
+    <ManagePackageVersionsCentrally>True</ManagePackageVersionsCentrally>
+    <UseArtifactsOutput>true</UseArtifactsOutput>
+    <NuGetAudit>true</NuGetAudit>
+
+    <!-- sourcelink -->
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+  </PropertyGroup>
+
+  <!-- nuget -->
+  <PropertyGroup>
+    <Authors>
+      Naamloos, afroraydude, DrCreo, Death, TiaqoY0, Axiom, Emzi0767, IDoEverything, Velvet, OoLunar, akiraveliara, DSharpPlus contributors
+    </Authors>
+    <Description>A C# API for Discord based off DiscordSharp.</Description>
+    <Company>DSharpPlus Contributors</Company>
+    <PackageProjectUrl>https://github.com/DSharpPlus/DSharpPlus</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DSharpPlus/DSharpPlus</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageLicenseExpression>MPL</PackageLicenseExpression>
+    <PackageIcon>dsharpplus.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/DSharpPlus/DSharpPlus/master/logo/dsharpplus.png</PackageIconUrl>
+  </PropertyGroup>
+
+  <!-- version numbers to ensure we always reference the correct version -->
+  <PropertyGroup>
+    <!-- this is inserted as the version prefix for all libraries declaring themselves as public-facing -->
+    <_DSharpPlusReleaseVersion>6.0.0</_DSharpPlusReleaseVersion>
+
+    <!-- DSharpPlus.Core.Abstractions.Models -->
+    <_DSharpPlusCoreAbstractionsModelsVersion>0.1.0</_DSharpPlusCoreAbstractionsModelsVersion>
+    
+    <!-- DSharpPlus.Core.Models-->
+    <_DSharpPlusCoreModelsVersion>0.1.0</_DSharpPlusCoreModelsVersion>
+    
+    <!-- DSharpPlus.Etf-->
+    <_DSharpPlusEtfVersion>0.1.0</_DSharpPlusEtfVersion>
+  </PropertyGroup>
+
+</Project>
