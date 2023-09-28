@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\lib\bundles\src\Bundles\Bundles.csproj" />
+    <ProjectReference Include="..\lib\bundles\src\Bundles\Bundles.csproj" />
   </ItemGroup>
   
 </Project>
