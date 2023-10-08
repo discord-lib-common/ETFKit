@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.HighPerformance" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\lib\bundles\src\Bundles\Bundles.csproj" />
   </ItemGroup>
   
