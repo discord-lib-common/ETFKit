@@ -116,7 +116,7 @@ partial struct EtfWriter
     {
         if (Ascii.IsValid(value))
         {
-            if (value.Length > 255)
+            if (value.Length >= 255)
             {
                 return false;
             }
@@ -145,7 +145,7 @@ partial struct EtfWriter
         scoped ReadOnlySpan<byte> value
     )
     {
-        if (value.Length > 255)
+        if (value.Length >= 255)
         {
             return false;
         }
@@ -169,7 +169,7 @@ partial struct EtfWriter
     {
         if (Ascii.IsValid(value))
         {
-            if (value.Length > ushort.MaxValue)
+            if (value.Length >= ushort.MaxValue)
             {
                 return false;
             }
@@ -198,7 +198,7 @@ partial struct EtfWriter
         scoped ReadOnlySpan<byte> value
     )
     {
-        if (value.Length > ushort.MaxValue)
+        if (value.Length >= ushort.MaxValue)
         {
             return false;
         }
@@ -228,7 +228,7 @@ partial struct EtfWriter
     {
         if (Ascii.IsValid(value))
         {
-            if (value.Length > ushort.MaxValue)
+            if (value.Length >= ushort.MaxValue)
             {
                 return false;
             }
@@ -257,7 +257,7 @@ partial struct EtfWriter
         scoped ReadOnlySpan<byte> value
     )
     {
-        if (value.Length > ushort.MaxValue)
+        if (value.Length >= ushort.MaxValue)
         {
             return false;
         }
