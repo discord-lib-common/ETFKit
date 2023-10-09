@@ -222,20 +222,14 @@ public ref partial struct EtfReader
     /// Copies the current term as raw memory.
     /// </summary>
     /// <returns>True if successful, false if unsuccessful.</returns>
-    public readonly bool TryReadMemory
-    (
-        Span<byte> buffer
-    )
+    public readonly bool TryReadMemory(Span<byte> buffer)
         => this.CurrentTermContents.TryCopyTo(buffer);
 
     /// <summary>
     /// Copies the current term as raw memory.
     /// </summary>
     /// <returns>True if successful, false if unsuccessful.</returns>
-    public readonly bool TryReadMemory
-    (
-        byte[] buffer
-    )
+    public readonly bool TryReadMemory(byte[] buffer)
         => this.CurrentTermContents.TryCopyTo(buffer);
 
     /// <summary>

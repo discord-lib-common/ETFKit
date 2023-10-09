@@ -36,10 +36,7 @@ partial struct EtfReader
     /// Copies the current term to a Span as UTF-8 string.
     /// </summary>
     /// <returns>True if successful, false if unsuccessful.</returns>
-    public readonly bool TryReadUtf8String
-    (
-        Span<byte> buffer
-    ) 
+    public readonly bool TryReadUtf8String(Span<byte> buffer)
         => this.TermType.IsString() && this.CurrentTermContents.TryCopyTo(buffer);
 
     /// <summary>

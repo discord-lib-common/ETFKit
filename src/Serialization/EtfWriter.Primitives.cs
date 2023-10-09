@@ -279,19 +279,13 @@ partial struct EtfWriter
     /// <summary>
     /// Writes a small-integer term.
     /// </summary>
-    public void WriteSmallIntegerTerm
-    (
-        byte value
-    ) 
+    public void WriteSmallIntegerTerm(byte value)
         => this.TryWriteSmallIntegerTerm(value);
 
     /// <summary>
     /// Writes an integer term.
     /// </summary>
-    public void WriteIntegerTerm
-    (
-        int value
-    )
+    public void WriteIntegerTerm(int value)
         => this.TryWriteIntegerTerm(value);
 
     /// <summary>
@@ -312,10 +306,7 @@ partial struct EtfWriter
     /// <summary>
     /// Writes a new float term.
     /// </summary>
-    public void WriteNewFloatTerm
-    (
-        double value
-    )
+    public void WriteNewFloatTerm(double value)
         => this.TryWriteNewFloatTerm(value);
 
     /// <summary>

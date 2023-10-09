@@ -16,27 +16,18 @@ internal static class ThrowHelper
     [DoesNotReturn]
     [DebuggerHidden]
     [StackTraceHidden]
-    public static void ThrowInvalidDecode
-    (
-        Type target
-    )
+    public static void ThrowInvalidDecode(Type target)
         => throw new InvalidOperationException($"Failed to decode the current term into an object of type {target}.");
 
     [DoesNotReturn]
     [DebuggerHidden]
     [StackTraceHidden]
-    public static void ThrowInvalidFloatEncode
-    (
-        double value
-    )
+    public static void ThrowInvalidFloatEncode(double value)
         => throw new InvalidOperationException($"Failed to encode {value} as old float term. Consider using a new float term instead.");
 
     [DoesNotReturn]
     [DebuggerHidden]
     [StackTraceHidden]
-    public static void ThrowInvalidStringEncode
-    (
-        TermType term
-    )
+    public static void ThrowInvalidStringEncode(TermType term)
         => throw new InvalidOperationException($"Failed to encode the given string as {term}.");
 }
