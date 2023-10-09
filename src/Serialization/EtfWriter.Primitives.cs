@@ -42,7 +42,7 @@ partial struct EtfWriter
         Span<byte> buffer = stackalloc byte[5];
         buffer[0] = (byte)TermType.Integer;
 
-        BinaryPrimitives.WriteInt32BigEndian(buffer[1..4], value);
+        BinaryPrimitives.WriteInt32BigEndian(buffer[1..], value);
 
         this.writer.Write<byte>(buffer);
 
@@ -66,7 +66,7 @@ partial struct EtfWriter
 
         bool success = value.TryFormat
         (
-            utf8Destination: buffer[1..31],
+            utf8Destination: buffer[1..],
             bytesWritten: out int _,
             format: ".20e".AsSpan(),
             provider: CultureInfo.InvariantCulture.NumberFormat
@@ -96,7 +96,7 @@ partial struct EtfWriter
         Span<byte> buffer = stackalloc byte[9];
         buffer[0] = (byte)TermType.Integer;
 
-        BinaryPrimitives.WriteDoubleBigEndian(buffer[1..8], value);
+        BinaryPrimitives.WriteDoubleBigEndian(buffer[1..], value);
 
         this.writer.Write<byte>(buffer);
 

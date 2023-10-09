@@ -35,9 +35,9 @@ partial struct EtfReader
             return false;
         }
 
-        ushort length = BinaryPrimitives.ReadUInt16BigEndian(this.CurrentTermContents[offset..2]);
+        ushort length = BinaryPrimitives.ReadUInt16BigEndian(this.CurrentTermContents.Slice(offset, 2));
 
-        text = Encoding.UTF8.GetString(this.CurrentTermContents[(offset + 2)..length]);
+        text = Encoding.UTF8.GetString(this.CurrentTermContents.Slice(offset + 2, length));
         offset = length + 2;
         return true;
     }
@@ -71,7 +71,7 @@ partial struct EtfReader
             return false;
         }
 
-        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[offset..4]);
+        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset, 4));
         byte creation = this.CurrentTermContents[^1];
 
         term = new()
@@ -113,8 +113,8 @@ partial struct EtfReader
             return false;
         }
 
-        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[offset..4]);
-        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[(offset + 4)..4]);
+        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset, 4));
+        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset + 4, 4));
 
         term = new()
         {
@@ -155,8 +155,8 @@ partial struct EtfReader
             return false;
         }
 
-        ulong id = BinaryPrimitives.ReadUInt64BigEndian(this.CurrentTermContents[offset..8]);
-        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[(offset + 8)..4]);
+        ulong id = BinaryPrimitives.ReadUInt64BigEndian(this.CurrentTermContents.Slice(offset, 8));
+        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset + 8, 4));
 
         term = new()
         {
@@ -197,8 +197,8 @@ partial struct EtfReader
             return false;
         }
 
-        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[offset..4]);
-        uint serial = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[(offset + 4)..4]);
+        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset, 4));
+        uint serial = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset + 4, 4));
         byte creation = this.CurrentTermContents[^1];
 
         term = new()
@@ -241,9 +241,9 @@ partial struct EtfReader
             return false;
         }
 
-        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[offset..4]);
-        uint serial = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[(offset + 4)..4]);
-        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[(offset + 8)..4]);
+        uint id = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset, 4));
+        uint serial = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset + 4, 4));
+        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset + 8, 4));
 
         term = new()
         {
@@ -293,7 +293,7 @@ partial struct EtfReader
 
         for (int i = 0; i < length; i++)
         {
-            id.Add(BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[offset..4]));
+            id.Add(BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset, 4)));
             offset += 4;
         }
 
@@ -338,7 +338,7 @@ partial struct EtfReader
             return false;
         }
 
-        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents[offset..4]);
+        uint creation = BinaryPrimitives.ReadUInt32BigEndian(this.CurrentTermContents.Slice(offset, 4));
         offset += 4;
 
         List<uint> id = new(length);
