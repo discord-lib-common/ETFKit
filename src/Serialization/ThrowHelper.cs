@@ -30,4 +30,10 @@ internal static class ThrowHelper
     [StackTraceHidden]
     public static void ThrowInvalidStringEncode(TermType term)
         => throw new InvalidOperationException($"Failed to encode the given string as {term}.");
+
+    [DoesNotReturn]
+    [DebuggerHidden]
+    [StackTraceHidden]
+    public static void ThrowInvalidStructureStart(TermType term)
+        => throw new InvalidOperationException($"Failed to start a structure of type {term}.");
 }

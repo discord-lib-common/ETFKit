@@ -154,6 +154,9 @@ public ref partial struct EtfWriter
         {
             this.writer.Write((byte)TermType.Nil);
         }
+
+        // this might've terminated something else, sooooo
+        this.DecrementAndWriteNullTerminator();
     }
 
     /// <inheritdoc cref="IDisposable.Dispose"/>
