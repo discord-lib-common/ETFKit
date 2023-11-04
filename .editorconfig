@@ -33,9 +33,6 @@ charset = utf-8
 ###############################
 [*.{cs,vb}]
 
-# MPL file header
-file_header_template = This Source Code form is subject to the terms of the Mozilla Public\nLicense, v. 2.0. If a copy of the MPL was not distributed with this\nfile, You can obtain one at https://mozilla.org/MPL/2.0/.
-
 # Organize usings
 dotnet_sort_system_directives_first = true:error
 dotnet_separate_import_directive_groups = true:error

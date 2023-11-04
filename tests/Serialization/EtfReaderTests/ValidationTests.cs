@@ -1,7 +1,3 @@
-// This Source Code form is subject to the terms of the Mozilla Public
-// License, v. 2.0. If a copy of the MPL was not distributed with this
-// file, You can obtain one at https://mozilla.org/MPL/2.0/.
-
 using System;
 using System.IO;
 
@@ -55,9 +51,7 @@ public class ValidationTests
     [InlineData(130)]
     [InlineData(132)]
     [InlineData(222)]
-#pragma warning disable xUnit1026 // the analyzer isn't picking up on the collection expression
     public void TestFailingOnInvalidVersion(byte version)
-#pragma warning restore xUnit1026
     {
         try
         {
