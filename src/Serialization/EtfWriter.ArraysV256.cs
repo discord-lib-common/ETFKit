@@ -46,7 +46,7 @@ partial struct EtfWriter
 
         uint processed = 0, written = 0;
         ref byte start = ref MemoryMarshal.GetReference(bytes);
-        ref byte writtenStart = ref MemoryMarshal.GetReference(bytes);
+        ref byte writtenStart = ref MemoryMarshal.GetReference(writtenBytes);
 
         // process 32 at a time, following the same scheme as v128 with one read and two writes
         while (processed + 32 <= bytes.Length)

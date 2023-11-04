@@ -43,10 +43,10 @@ partial struct EtfWriter
             backingWritten = ArrayPool<byte>.Shared.Rent(bytes.Length * 2);
             writtenBytes = backingWritten.AsSpan();
         }
-
+        
         uint processed = 0, written = 0;
         ref byte start = ref MemoryMarshal.GetReference(bytes);
-        ref byte writtenStart = ref MemoryMarshal.GetReference(bytes);
+        ref byte writtenStart = ref MemoryMarshal.GetReference(writtenBytes);
 
         // we process 16 at a time, using one read and two writes
         while (processed + 16 <= bytes.Length)
