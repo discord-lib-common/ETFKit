@@ -15,6 +15,7 @@ partial struct EtfReader
         out double value
     )
     {
+#pragma warning disable IDE0010
         switch (this.TermType)
         {
             case TermType.Float:
@@ -28,6 +29,7 @@ partial struct EtfReader
                 value = default;
                 return false;
         }
+#pragma warning restore IDE0010
     }
 
     /// <summary>

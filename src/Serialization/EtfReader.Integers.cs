@@ -126,6 +126,7 @@ partial struct EtfReader
     }
 
 #pragma warning disable CS8509 // switch expressions should handle every option; this one shouldn't
+#pragma warning disable IDE0072
 
     /// <summary>
     /// Provides the implementation for performing a truncating read from an integer term.
@@ -143,6 +144,7 @@ partial struct EtfReader
         };
     }
 
+#pragma warning restore IDE0072
 #pragma warning restore CS8509
 
     /// <summary>

@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-using Bundles.ValueCollections;
+using Bundles.Unmanaged;
 
 namespace ETFKit.Serialization;
 
@@ -21,7 +21,7 @@ public ref partial struct EtfReader
     * do not change field order without accounting for struct layout -- this is an unmanaged struct;
     * layout is explicit here!
     * 
-    * the current layout is putting the ValueStacks first, which are 24b each; then the spans, which
+    * the current layout is putting the UnmanagedStacks first, which are 24b each; then the spans, which
     * are 16b each, then an integer and several byte-sized fields. this leads to 86 bytes used and 2
     * bytes padding required on 8-byte-aligned ABIs, 10 bytes padding on higher alignment.
     * 
@@ -29,8 +29,8 @@ public ref partial struct EtfReader
     * where possible - which should be most cases.
     ***************************************************************************************************/
 
-    private ValueStack<uint> remainingLengths;
-    private ValueStack<TermType> complexObjects;
+    private UnmanagedStack<uint> remainingLengths;
+    private UnmanagedStack<TermType> complexObjects;
 
     private readonly ReadOnlySpan<byte> data;
 
@@ -91,7 +91,7 @@ public ref partial struct EtfReader
     /// Constructs a new <seealso cref="EtfReader"/>, using the specified buffers to store temporary metadata.
     /// </summary>
     /// <remarks>
-    /// It is legal for call-sites to pass stackallocated ValueStack instances here, thereby eliminating two
+    /// It is legal for call-sites to pass stackallocated UnmanagedStack instances here, thereby eliminating two
     /// array allocations. This is, however, illegal if the EtfReader is then passed down the stack, in which
     /// case memory it depends on will be destroyed as part of the stack frame.
     /// </remarks>
@@ -103,8 +103,8 @@ public ref partial struct EtfReader
     public EtfReader
     (
         ReadOnlySpan<byte> data,
-        ValueStack<uint> lengths,
-        ValueStack<TermType> objects
+        UnmanagedStack<uint> lengths,
+        UnmanagedStack<TermType> objects
     )
     {
         if (lengths.Capacity != objects.Capacity)
@@ -138,6 +138,7 @@ public ref partial struct EtfReader
         // because ETF doesn't have end tokens (luckily!), we synthesize them here to be able to expose
         // an acceptable API without performance sacrifices
         // we also, importantly, do this BEFORE decoding the next term.
+#pragma warning disable IDE0072
         if (this.remainingLengths.Count != 0 && this.remainingLengths.Peek() == 0)
         {
             this.TokenType = this.complexObjects.Pop() switch
@@ -148,7 +149,7 @@ public ref partial struct EtfReader
                 _ => EtfTokenType.Term
             };
 
-            this.remainingLengths.Pop();
+            _ = this.remainingLengths.Pop();
             return true;
         }
 
@@ -168,6 +169,7 @@ public ref partial struct EtfReader
             TermType.SmallTuple or TermType.LargeTuple => EtfTokenType.StartTuple,
             _ => EtfTokenType.Term
         };
+#pragma warning restore IDE0072
 
         bool success = false;
 

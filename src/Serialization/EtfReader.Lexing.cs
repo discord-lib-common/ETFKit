@@ -420,7 +420,7 @@ partial struct EtfReader
             if (this.index + length <= this.data.Length)
             {
                 this.CurrentTermContents = this.data.Slice(this.index, length);
-                
+
                 success = true;
                 return length;
             }

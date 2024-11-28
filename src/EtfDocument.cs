@@ -78,8 +78,8 @@ public abstract class EtfDocument : IDisposable
     /// <returns>A value indicating whether this operation was successful.</returns>
     protected internal abstract bool TryGetArrayElementAtIndex
     (
-        long currentIndex, 
-        int arrayIndex, 
+        long currentIndex,
+        int arrayIndex,
         out EtfElement element
     );
 
@@ -92,8 +92,8 @@ public abstract class EtfDocument : IDisposable
     /// <returns>A value indicating whether this operation was successful.</returns>
     protected internal abstract bool TryGetChildProperty
     (
-        long currentIndex, 
-        int propertyIndex, 
+        long currentIndex,
+        int propertyIndex,
         out EtfElement element
     );
 
@@ -106,8 +106,8 @@ public abstract class EtfDocument : IDisposable
     /// <returns>A value indicating whether this operation was successful.</returns>
     protected internal abstract bool TryGetChildProperty
     (
-        long currentIndex, 
-        string propertyName, 
+        long currentIndex,
+        string propertyName,
         out EtfElement element
     );
 
@@ -121,9 +121,9 @@ public abstract class EtfDocument : IDisposable
     /// <returns>A value indicating whether this operation was successful.</returns>
     protected internal abstract bool TryGetChildProperty
     (
-        long currentIndex, 
-        EtfElement propertyKey, 
-        out EtfElement element, 
+        long currentIndex,
+        EtfElement propertyKey,
+        out EtfElement element,
         bool matchData = false
     );
 
@@ -139,8 +139,8 @@ public abstract class EtfDocument : IDisposable
     /// <returns>A value indicating wehther this operation was successful.</returns>
     protected internal abstract bool TryGetChildProperty
     (
-        long currentIndex, 
-        ReadOnlySpan<byte> data, 
+        long currentIndex,
+        ReadOnlySpan<byte> data,
         out EtfElement element
     );
 
@@ -159,8 +159,8 @@ public abstract class EtfDocument : IDisposable
     /// <returns>A value indicating whether this operation succeeded.</returns>
     protected internal abstract bool TryGetValue<T>
     (
-        long index, 
-        
+        long index,
+
         [MaybeNullWhen(false)]
         out T value
     );

@@ -1,6 +1,6 @@
 using System;
 
-using Bundles.ValueCollections;
+using Bundles.Unmanaged;
 
 using CommunityToolkit.HighPerformance;
 using CommunityToolkit.HighPerformance.Buffers;
@@ -20,8 +20,8 @@ public ref partial struct EtfWriter
 {
     private readonly ArrayPoolBufferWriter<byte> writer;
 
-    private ValueStack<uint> remainingLengths;
-    private ValueStack<TermType> complexObjects;
+    private UnmanagedStack<uint> remainingLengths;
+    private UnmanagedStack<TermType> complexObjects;
 
     /// <summary>
     /// Retrieves the data written to the underlying buffer as a <seealso cref="ReadOnlySpan{T}"/>.
@@ -83,8 +83,8 @@ public ref partial struct EtfWriter
             new ArrayPoolBufferWriter<byte>(initialCapacity),
             maxDepth
         )
-    { 
-    
+    {
+
     }
 
     /// <summary>
@@ -99,12 +99,12 @@ public ref partial struct EtfWriter
     )
         : this
         (
-            writer, 
-            new(new uint[maxDepth]), 
+            writer,
+            new(new uint[maxDepth]),
             new(new TermType[maxDepth])
         )
-    { 
-    
+    {
+
     }
 
     /// <summary>
@@ -115,8 +115,8 @@ public ref partial struct EtfWriter
     public EtfWriter
     (
         ArrayPoolBufferWriter<byte> writer,
-        ValueStack<uint> lengths,
-        ValueStack<TermType> objects
+        UnmanagedStack<uint> lengths,
+        UnmanagedStack<TermType> objects
     )
     {
         if (lengths.Capacity != objects.Capacity)
@@ -142,7 +142,7 @@ public ref partial struct EtfWriter
         }
 
         // length == 0
-        this.remainingLengths.Pop();
+        _ = this.remainingLengths.Pop();
         TermType presentTerm = this.complexObjects.Pop();
 
         // "null"-terminate a list
